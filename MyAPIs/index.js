@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bookingsRoutes = require('./routes/bookingsRoutes'); // New routes file
+const pricingRoutes = require("./routes/dynamicPricing");
 const app = express();
 const PORT = 3000;
 
@@ -32,6 +33,9 @@ mongoose.connect('mongodb://localhost:27017/travelAgency', {
 
 // Use the bookings routes
 app.use('/bookings', bookingsRoutes);
+
+// Use the dynamic pricing routes
+app.use('/pricing', pricingRoutes)
 
 // Start the server
 app.listen(PORT, () => {
